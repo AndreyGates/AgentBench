@@ -36,7 +36,7 @@ class ConfigLoader:
         if not os.path.exists(path):
             raise Exception("File not found: {}".format(path))
         if path.endswith(".yaml") or path.endswith(".yml"):
-            with open(path) as f:
+            with open(path, encoding='utf-8') as f: # NOTE: added encoding='utf-8'
                 config = yaml.safe_load(f)
         elif path.endswith(".json"):
             with open(path) as f:
