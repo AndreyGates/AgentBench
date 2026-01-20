@@ -6,8 +6,6 @@
 
 ### Что добавлено:
 - ✅ Поддержка GigaChat API (LangChain integration)
-- ✅ Multi-turn dialogue для задач с несколькими раундами взаимодействия
-- ✅ Custom metrics (precision, recall, F1, efficiency score и др.)
 - ✅ Пример task + agent для анализа инцидентов безопасности
 
 ### Отличия от baseline AgentBench v0.2:
