@@ -2,16 +2,14 @@ import: definition.yaml
 
 concurrency:
   task:
-    dbbench-std: 5
-    os-std: 5
+    incident_analysis: 1 # number of task workers for each task
   agent:
-    gpt-3.5-turbo-0613: 5
+    incident_analyzer: 1 # number of task workers for each agent
 
 assignments: # List[Assignment] | Assignment
   - agent: # "task": List[str] | str ,  "agent": List[str] | str
-      - gpt-3.5-turbo-0613
+      - incident_analyzer
     task:
-      - dbbench-std
-      - os-std
+      - incident_analysis
 
 output: "outputs/{TIMESTAMP}"

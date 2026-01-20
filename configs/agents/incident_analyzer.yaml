@@ -1,0 +1,18 @@
+module: src.client.agents.IncidentAnalyzer
+parameters:
+  url: https://gigachat.devices.sberbank.ru/api/v1
+  model: GigaChat-2-Max
+  headers:
+    Content-Type: application/json
+    Authorization: Bearer ...
+  body:
+    temperature: 0.1
+    top_p: 0.9
+    max_tokens: 2048
+  prompter:
+    name: role_content_dict
+    args:
+      agent_role: assistant
+  return_format: "{response[choices][0][message][content]}"
+  scope: GIGACHAT_API_PERS
+  credentials: MDE5YmMwOWItYTA1Ni03MTY1LTkyNzQtZTlkOGU0MjZjOGFjOmIwYTJjOTA1LTAxNzktNGY5YS1iNzZkLTcxZmMyYzdmZTE4Yg== # NOTE: this is a placeholder, you need to replace it with your actual credentials

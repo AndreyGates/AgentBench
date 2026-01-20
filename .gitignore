@@ -17,3 +17,8 @@ src/server/tasks/card_game/result
 .dockerfile
 .dockerfile-cache
 analysis
+
+venv/
+.env
+info/
+TODO.md

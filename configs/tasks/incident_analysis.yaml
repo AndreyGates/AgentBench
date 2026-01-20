@@ -1,0 +1,10 @@
+default:
+  module: src.server.tasks.incident_analysis.IncidentAnalysis
+  parameters:
+    concurrency: 1
+    max_round: 5
+
+incident_analysis:
+  parameters:
+    name: incident_analysis
+    data_file: "data/incident_analysis/logs.jsonl"

@@ -8,6 +8,7 @@ import requests
 
 from src.configs import ConfigLoader
 
+import sys
 
 def _start_worker(name, port, controller, definition):
     conf = definition[name]
@@ -30,7 +31,7 @@ def _start_worker(name, port, controller, definition):
                 docker["image"],
                 "bash",
                 "-c",
-                docker.get("command", "") + f" python -m src.server.task_worker {name}"
+                docker.get("command", "") + f" {sys.executable} -m src.server.task_worker {name}" # NOTE: changed python to sys.executable
                                             f" --self http://localhost:{port}/api"
                                             f" --port {port}"
                                             f" --controller {controller.replace('localhost', 'host.docker.internal')}",
@@ -39,7 +40,7 @@ def _start_worker(name, port, controller, definition):
     else:
         subprocess.Popen(
             [
-                "python",
+                sys.executable, # NOTE: changed python to sys.executable
                 "-m",
                 "src.server.task_worker",
                 name,
@@ -90,7 +91,7 @@ if __name__ == "__main__":
                 o = urlparse(config["controller"])
                 subprocess.Popen(
                     [
-                        "python",
+                        sys.executable, # NOTE: changed python to sys.executable
                         "-m",
                         "src.server.task_controller",
                         "--port",
@@ -99,7 +100,7 @@ if __name__ == "__main__":
                 )
         else:
             subprocess.Popen(
-                ["python", "-m", "src.server.task_controller", "--port", "5000"]
+                [sys.executable, "-m", "src.server.task_controller", "--port", "5000"] # NOTE: changed python to sys.executable
             )
         for i in range(10):
             try:
