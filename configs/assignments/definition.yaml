@@ -3,7 +3,7 @@ definition:
     overwrite:
       module: src.client.TaskClient
       parameters:
-        controller_address: "http://localhost:5000/api"
+        controller_address: "http://localhost:5000/api" # NOTE: overriden by the src.assigner's controller_address
     import: ../tasks/task_assembly.yaml
   agent:
     import:

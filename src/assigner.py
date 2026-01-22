@@ -414,10 +414,28 @@ if __name__ == "__main__":
     parser.add_argument(
         "--auto-retry", "-r", action="store_true", dest="retry"
     )
+    """PATCH: Controller port selection"""
+    parser.add_argument(
+        "--controller-port",
+        type=int,
+        default=None,
+        help="Override controller port (default: from config)"
+    )
+    """"""
     args = parser.parse_args()
 
     loader = ConfigLoader()
     config_ = loader.load_from(args.config)
+
+    ### NOTE: Override controller port
+    if args.controller_port:
+        print(f"Using controller port: {args.controller_port}")
+        for task_name, task_def in config_["definition"]["task"].items():
+            if "parameters" in task_def:
+                task_def["parameters"]["controller_address"] = (
+                    f"http://localhost:{args.controller_port}/api"
+                )
+
     value = AssignmentConfig.parse_obj(config_)
     value = AssignmentConfig.post_validate(value)
     v = value.dict()

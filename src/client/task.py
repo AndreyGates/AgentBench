@@ -20,7 +20,7 @@ class TaskClient:
         self, name: str, controller_address: str = "http://localhost:5000/api", *_, **__,
     ) -> None:
         self.name = name
-        self.controller_address = controller_address
+        self.controller_address = controller_address # NOTE: parameter from configs/assignments/definition.yaml
         print("TaskClient created: {} ({})".format(name, controller_address))
 
     def get_indices(self) -> List[SampleIndex]:

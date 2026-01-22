@@ -20,7 +20,7 @@ fastapi==0.115.6
 # AGENTBENCH TASKS (по необходимости)
 # ============================================
 # Для dbbench (SQL задачи)
-mysql-connector-python==8.0.33
+# mysql-connector-python==8.0.33
 
 # Для OS Interaction / Containerized tasks
 # docker==7.1.0

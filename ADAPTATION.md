@@ -27,9 +27,13 @@ pip install -r requirements.txt
 ### Шаг 1: Запуск Task Server
 
 ```bash
-# Запускает controller + все task workers
+# Запускает controller + все task workers (default controller port - 5000)
 python -m src.start_task -a
-# (см. configs/start_task.yaml для запуска нужных задач)
+
+# Или на custom порту:
+python -m src.start_task -a --controller-port 8080
+
+# см. configs/start_task.yaml для запуска нужных задач
 ```
 
 ### Шаг 2: Запуск Assigner (evaluation)
@@ -37,8 +41,13 @@ python -m src.start_task -a
 ```bash
 # В новом терминале:
 python -m src.assigner
-# (см. configs/assignments/default.yaml для направления агента на нужную задачу)
+
+# Или с custom портом:
+python -m src.assigner --controller-port 8080
+
+# см. configs/assignments/default.yaml для направления агента на нужную задачу
 ```
+**NOTE:** Для подробной информации по конфигурации запуска смотрите [Entrance Guide](https://github.com/AndreyGates/AgentBench/blob/gigachat-adaptation/docs/Entrance_en.md).
 
 ### Шаг 3: Анализ результатов
 
